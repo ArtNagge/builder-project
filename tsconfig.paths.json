@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@styles": ["packages/styles"],
+      "@styles/*": ["packages/styles/*"],
+
+      "@hooks": ["packages/hooks"],
+      "@hooks/*": ["packages/hooks/*"],
+
+      "@utils": ["packages/utils"],
+      "@utils/*": ["packages/utils/*"],
+
+      "@ts": ["packages/types"],
+      "@ts/*": ["packages/types/*"]
+    }
+  }
+}

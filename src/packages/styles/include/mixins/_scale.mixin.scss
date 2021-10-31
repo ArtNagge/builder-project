@@ -1,0 +1,61 @@
+@use "sass:list";
+
+@import "../../variables/breakpoints";
+
+@mixin phone() {
+  @media (min-width: 0) and (max-width: #{$breakpoint-md - 1}px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: #{$breakpoint-md}px) and (max-width: #{$breakpoint-xl}px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: #{$breakpoint-xl + 1}px) {
+    @content;
+  }
+}
+
+/**
+  Функция для скейлинга значений
+  Сайт везде использует vw вместо пикселей
+  Если передаем массивом - переводит в vw для различных разрешений
+  Переводит в vw ТОЛЬКО ПИКСЕЛИ
+  Пример:
+    width: [24px, 32px, 48px]
+ */
+@mixin scale($params) {
+  @include phone() {
+    @each $property, $value in $params {
+      #{$property}: if(
+        type-of($value) == "list" and list.is-bracketed($value),
+        smartScale(list.nth($value, 1), "phone"),
+        smartScale($value, "phone")
+      );
+    }
+  }
+
+  @include tablet() {
+    @each $property, $value in $params {
+      #{$property}: if(
+        type-of($value) == "list" and list.is-bracketed($value),
+        smartScale(list.nth($value, 2), "tablet"),
+        smartScale($value, "tablet")
+      );
+    }
+  }
+
+  @include desktop() {
+    @each $property, $value in $params {
+      #{$property}: if(
+        type-of($value) == "list" and list.is-bracketed($value),
+        smartScale(list.nth($value, 3), "desktop"),
+        smartScale($value, "desktop")
+      );
+    }
+  }
+}
