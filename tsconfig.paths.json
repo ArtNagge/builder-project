@@ -12,7 +12,10 @@
       "@utils/*": ["packages/utils/*"],
 
       "@ts": ["packages/types"],
-      "@ts/*": ["packages/types/*"]
+      "@ts/*": ["packages/types/*"],
+
+      "@store": ["redux"],
+      "@store/*": ["redux/*"]
     }
   }
 }

@@ -1,4 +1,5 @@
 import breakpoints from '../styles/variables/_breakpoints.module.scss'
+
 import useMedia from './useMedia'
 
 const useMediaSM = () => {
