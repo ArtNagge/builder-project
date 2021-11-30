@@ -5,6 +5,9 @@
       "@styles": ["packages/styles"],
       "@styles/*": ["packages/styles/*"],
 
+      "@components": ["packages/components"],
+      "@components/*": ["packages/components/*"],
+
       "@hooks": ["packages/hooks"],
       "@hooks/*": ["packages/hooks/*"],
 

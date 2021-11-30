@@ -1,0 +1,44 @@
+// .button {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   border: 0;
+//   margin: 0;
+//   background-color: transparent;
+//   cursor: pointer;
+//   text-decoration: none;
+
+//   @include scale(
+//     (
+//       padding: 0 35px,
+//       border-radius: 10px,
+//     )
+//   );
+
+//   &:disabled {
+//     cursor: default;
+//     opacity: 0.15;
+//     pointer-events: none;
+//   }
+
+//   & > .text {
+//     font-style: normal;
+//     font-weight: normal;
+//     white-space: nowrap;
+//   }
+
+//   &.flex {
+//     width: 100%;
+//   }
+
+//   /** STYLE **/
+
+//   // &.filled {
+//   //   @each $property, $value in $colorsList {
+//   //     &.#{$property} {
+//   //       background-color: var(--color-#{$property});
+//   //       color: color-contrast($value);
+//   //     }
+//   //   }
+//   // }
+// }

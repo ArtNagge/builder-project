@@ -1,0 +1,89 @@
+// .wrapper {
+//   position: relative;
+
+//   // @include scale(
+//   //   (
+//   //     width: 400px,
+//   //   )
+//   // );
+
+//   &.inFocus {
+
+//     .labelText {
+//       // color: var(--color-tints-light-blue-2);
+//     }
+
+//     &::before {
+//       // background-color: var(--color-tints-light-blue-2);
+//     }
+//   }
+
+//   &.withError {
+
+//     // .labelText {
+//     //   color: var(--color-tints-light-red-1);
+//     // }
+
+//     // &::before {
+//     //   background-color: var(--color-tints-light-red-1);
+//     // }
+
+//     .labelTextError {
+//       position: absolute;
+//       left: 0;
+
+//       @include scale(
+//         (
+//           top: 73px,
+//         )
+//       );
+//     }
+//   }
+// }
+
+// .label {
+//   display: flex;
+//   flex-direction: column;
+
+//   @include size(100%);
+// }
+
+// .input {
+//   display: block;
+//   width: 100%;
+//   box-sizing: border-box;
+//   border: 0;
+//   background: var(--color-bg-blue);
+//   color: var(--color-label-black);
+//   outline: none;
+
+//   @include size(100%);
+
+//   @include scale(
+//     (
+//       padding: 17px 20px,
+//       height: 50px,
+//       border-radius: 10px,
+//       margin-top: 7px,
+//     )
+//   );
+
+//   @include typographyBodyRegular;
+
+//   &::placeholder {
+//     color: var(--color-label-gray);
+//   }
+
+//   &.hideArrows {
+
+//     &::-webkit-outer-spin-button,
+//     &::-webkit-inner-spin-button {
+//       margin: 0;
+//       -webkit-appearance: none;
+//     }
+
+//     &[type="number"] {
+//       -moz-appearance: textfield;
+//     }
+//   }
+// }
