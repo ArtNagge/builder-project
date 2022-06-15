@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { ReactFCWithChildren } from '@ts'
 
 import Head from 'next/head'
 
-export const DefaultLayout: FC = ({ children }) => {
+export const DefaultLayout: ReactFCWithChildren = ({ children }) => {
   return (
     <>
       <Head>

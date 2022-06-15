@@ -1,6 +1,7 @@
 import {
   AnchorHTMLAttributes,
   AriaRole,
+  createElement,
   CSSProperties,
   DOMAttributes,
   forwardRef,
@@ -46,7 +47,6 @@ const Typography = forwardRef<
     },
     ref,
   ) => {
-    const CustomTag = `${href ? 'a' : component}`
     const componentVariantMap: Record<
       TypographyProps['component'],
       TypographyProps['variant']
@@ -63,23 +63,20 @@ const Typography = forwardRef<
       a: 'rglr',
     }
 
-    return (
-      <CustomTag
-        // @ts-ignore
-        className={clsx(
-          classes.typography,
-          classes[variant ?? componentVariantMap[component]],
-          classes[color],
-          className,
-          {
-            [classes.link]: !!href,
-          },
-        )}
-        target={target || '_blank'}
-        href={href}
-        {...props}
-      />
-    )
+    return createElement(href ? 'a' : component, {
+      className: clsx(
+        classes.typography,
+        classes[variant ?? componentVariantMap[component]],
+        classes[color],
+        className,
+        {
+          [classes.link]: !!href,
+        },
+      ),
+      target: target || '_blank',
+      href,
+      ...props,
+    })
   },
 )
 

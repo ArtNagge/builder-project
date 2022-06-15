@@ -1,4 +1,4 @@
-@import "breakpoints";
+@import 'breakpoints';
 
 /* stylelint-disable */
 :export {
@@ -8,6 +8,7 @@
   breakpoint-lg: $breakpoint-lg;
   breakpoint-xl: $breakpoint-xl;
   breakpoint-xxl: $breakpoint-xxl;
+  breakpoint-2xxl: $breakpoint-2xxl;
 }
 
 /* stylelint-enable */

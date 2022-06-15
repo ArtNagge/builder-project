@@ -1,12 +1,15 @@
+import Typography from '@components/Typography'
 import Head from 'next/head'
 
-export default function Custom404() {
+const MainPage = () => {
   return (
     <>
       <Head>
         <title>Главная</title>
       </Head>
-      123
+      <Typography>123</Typography>
     </>
   )
 }
+
+export default MainPage

@@ -13,9 +13,7 @@ module.exports = {
     config.module.rules.push({
       test: /\.svg$/,
       issuer: { and: [/\.(js|ts)x?$/] },
-      use: [
-        'url-loader',
-      ],
+      use: ['url-loader'],
     })
     return config
   },
@@ -23,27 +21,7 @@ module.exports = {
   sassOptions: {
     indentWidth: 4,
     includePaths: [path.join(__dirname, 'src', 'packages')],
-    additionalData: (content, loaderContext) => {
-      const { resourcePath, rootContext } = loaderContext
-      const relativePath = path.relative(rootContext, resourcePath)
-      if (
-        !relativePath.includes('@styles/variables') &&
-        !relativePath.includes('@styles/include') &&
-        relativePath.endsWith('.module.scss')
-      ) {
-        content =
-          `
-        @import 'styles/variables/breakpoints';
-        @import 'styles/variables/colors';
-        @import 'styles/variables/fonts';
-        @import 'styles/include/functions';
-        @import 'styles/include/animations';
-        @import 'styles/include/mixins';
-      ` + content
-      }
-
-      return content
-    },
+    additionalData: "@import 'styles/scale/scale.mixin';",
   },
   publicRuntimeConfig: {
     APP_LOCALE: process.env.APP_LOCALE || 'ru-RU',

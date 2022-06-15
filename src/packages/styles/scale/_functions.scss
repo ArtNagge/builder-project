@@ -1,9 +1,9 @@
-@use "sass:list";
+@use 'sass:list';
 
-@use "sass:math";
+@use 'sass:math';
 
 @function vw($px, $base-vw: $breakpoint-xxl) {
-  $isList: if(type-of($px) == "list", true, false);
+  $isList: if(type-of($px) == 'list', true, false);
 
   @if ($isList) {
     $result: [];
@@ -14,9 +14,7 @@
     }
 
     @return $result;
-  }
-
-  @else {
+  } @else {
     $number: strip-unit($px);
 
     @return #{math.div($number * 100, $base-vw)}vw;
@@ -35,20 +33,22 @@
   @return vw($px, $breakpoint-xxl);
 }
 
+@function largeDesktopVw($px) {
+  @return vw($px, $breakpoint-2xxl);
+}
+
 @function parseParams($params, $function) {
   $result: ();
 
   @each $item in $params {
-    @if $function == "phone" {
+    @if $function == 'phone' {
       $result: list.append($result, phoneVw($item));
-    }
-
-    @else if $function == "tablet" {
+    } @else if $function == 'tablet' {
       $result: list.append($result, tabletVw($item));
-    }
-
-    @else if $function == "desktop" {
+    } @else if $function == 'desktop' {
       $result: list.append($result, desktopVw($item));
+    } @else if $function == 'largeDesktop' {
+      $result: list.append($result, largeDesktopVw($item));
     }
   }
 
@@ -60,7 +60,7 @@
 }
 
 @function strip-unit($number) {
-  @if type-of($number) == "number" and not unitless($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
     @return math.div($number, $number * 0 + 1);
   }
 
@@ -68,46 +68,48 @@
 }
 
 @function pxToVw($val, $type) {
-  @if (type-of($val) == "null") {
+  @if (type-of($val) == 'null') {
     @return null;
   }
 
   $isConvertable: if(
     (
-      type-of($val) == "list" or
-      (type-of($val) == "number" and unit($val) == "px")
+      type-of($val) == 'list' or
+        (type-of($val) == 'number' and unit($val) == 'px')
     ),
     true,
     false
   );
 
-  @if ($type == "phone") {
+  @if ($type == 'phone') {
     @return if($isConvertable, phoneVw($val), $val);
   }
 
-  @if ($type == "tablet") {
+  @if ($type == 'tablet') {
     @return if($isConvertable, tabletVw($val), $val);
   }
 
-  @if ($type == "desktop") {
+  @if ($type == 'desktop') {
     @return if($isConvertable, desktopVw($val), $val);
+  }
+
+  @if ($type == 'largeDesktop') {
+    @return if($isConvertable, largeDesktopVw($val), $val);
   }
 }
 
 @function smartScale($val, $type) {
-  $isList: if((type-of($val) == "list"), true, false);
+  $isList: if((type-of($val) == 'list'), true, false);
 
   @if ($isList) {
-    $result: "";
+    $result: '';
 
     @each $item in $val {
-      $result: $result + pxToVw($item, $type) + " ";
+      $result: $result + pxToVw($item, $type) + ' ';
     }
 
     @return unquote($result);
-  }
-
-  @else {
+  } @else {
     @return pxToVw($val, $type);
   }
 }

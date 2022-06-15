@@ -1,6 +1,16 @@
 @use "sass:list";
 
-@import "../../variables/breakpoints";
+@import "./variables/breakpoints";
+@import "./functions";
+
+/*
+  Функции, которые использует скейлинг
+  Сайт везде использует vw вместо пикселей
+  Если передаем массивом - переводит в vw для различных разрешений
+  Переводит в vw ТОЛЬКО ПИКСЕЛИ
+  Пример:
+    width: [24px, 32px, 48px]
+*/
 
 @mixin phone() {
   @media (min-width: 0) and (max-width: #{$breakpoint-md - 1}px) {
@@ -15,7 +25,13 @@
 }
 
 @mixin desktop() {
-  @media (min-width: #{$breakpoint-xl + 1}px) {
+  @media (min-width: #{$breakpoint-xl}px) {
+    @content;
+  }
+}
+
+@mixin largeDesktop() {
+  @media (min-width: #{$breakpoint-2xxl}px) {
     @content;
   }
 }
@@ -55,6 +71,16 @@
         type-of($value) == "list" and list.is-bracketed($value),
         smartScale(list.nth($value, 3), "desktop"),
         smartScale($value, "desktop")
+      );
+    }
+  }
+
+  @include largeDesktop() {
+    @each $property, $value in $params {
+      #{$property}: if(
+        type-of($value) == "list" and list.is-bracketed($value),
+        smartScale(list.nth($value, 3), "largeDesktop"),
+        smartScale($value, "largeDesktop")
       );
     }
   }

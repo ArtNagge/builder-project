@@ -11,17 +11,17 @@
   //   )
   // );
 
-  @each $property, $value in $colorsList {
-    &.#{$property} {
-      color: var(--color-#{$property});
-    }
-  }
-
-  // &.bodySuperSmall {
-  //   @include typographyBodySuperSmall;
+  // @each $property, $value in $colorsList {
+  //   &.#{$property} {
+  //     color: var(--color-#{$property});
+  //   }
   // }
 
-  &.link {
-    text-decoration: none;
-  }
+  // // &.bodySuperSmall {
+  // //   @include typographyBodySuperSmall;
+  // // }
+
+  // &.link {
+  //   text-decoration: none;
+  // }
 }
