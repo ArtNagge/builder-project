@@ -113,3 +113,24 @@
     @return pxToVw($val, $type);
   }
 }
+
+@mixin supports-safe-area-insets-env {
+  @supports (height: env(safe-area-inset-bottom)) {
+    @content;
+  }
+}
+
+@mixin supports-safe-area-insets-constants {
+  @supports (height: constant(safe-area-inset-bottom)) {
+    @content;
+  }
+}
+
+@mixin hideScrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+} ;

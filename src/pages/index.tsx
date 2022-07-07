@@ -1,5 +1,6 @@
-import Typography from '@components/Typography'
 import Head from 'next/head'
+
+import Typography from '@components/Typography'
 
 const MainPage = () => {
   return (
@@ -7,7 +8,7 @@ const MainPage = () => {
       <Head>
         <title>Главная</title>
       </Head>
-      <Typography>123</Typography>
+      <Typography variant="title">123</Typography>
     </>
   )
 }

@@ -46,28 +46,12 @@ const Typography = forwardRef<
       ...props
     },
     ref,
-  ) => {
-    const componentVariantMap: Record<
-      TypographyProps['component'],
-      TypographyProps['variant']
-    > = {
-      h1: 'rglr',
-      h2: 'rglr',
-      h3: 'rglr',
-      h4: 'rglr',
-      h5: 'rglr',
-      h6: 'rglr',
-      p: 'rglr',
-      span: 'rglr',
-      div: 'rglr',
-      a: 'rglr',
-    }
-
-    return createElement(href ? 'a' : component, {
+  ) =>
+    createElement(href ? 'a' : component, {
       className: clsx(
         classes.typography,
-        classes[variant ?? componentVariantMap[component]],
-        classes[color],
+        classes[variant],
+        classes[`color_${color}`],
         className,
         {
           [classes.link]: !!href,
@@ -76,8 +60,7 @@ const Typography = forwardRef<
       target: target || '_blank',
       href,
       ...props,
-    })
-  },
+    }),
 )
 
 Typography.displayName = 'Typography'

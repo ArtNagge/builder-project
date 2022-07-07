@@ -1,7 +1,9 @@
-@use "sass:list";
+@use 'sass:list';
 
-@import "./variables/breakpoints";
-@import "./functions";
+@import './variables/breakpoints';
+@import './variables/colors.module';
+@import './variables/colors';
+@import './functions';
 
 /*
   Функции, которые использует скейлинг
@@ -42,45 +44,53 @@
   Если передаем массивом - переводит в vw для различных разрешений
   Переводит в vw ТОЛЬКО ПИКСЕЛИ
   Пример:
-    width: [24px, 32px, 48px]
+    width: (24px, 32px, 48px)
  */
 @mixin scale($params) {
   @include phone() {
     @each $property, $value in $params {
+      $valueArr: list.join([], $value);
+
       #{$property}: if(
-        type-of($value) == "list" and list.is-bracketed($value),
-        smartScale(list.nth($value, 1), "phone"),
-        smartScale($value, "phone")
+        type-of($valueArr) and length($valueArr) > 0,
+        smartScale(list.nth($valueArr, 1), 'phone'),
+        smartScale($valueArr, 'phone')
       );
     }
   }
 
   @include tablet() {
     @each $property, $value in $params {
+      $valueArr: list.join([], $value);
+
       #{$property}: if(
-        type-of($value) == "list" and list.is-bracketed($value),
-        smartScale(list.nth($value, 2), "tablet"),
-        smartScale($value, "tablet")
+        type-of($valueArr) and length($valueArr) > 1,
+        smartScale(list.nth($valueArr, 2), 'tablet'),
+        smartScale($valueArr, 'tablet')
       );
     }
   }
 
   @include desktop() {
     @each $property, $value in $params {
+      $valueArr: list.join([], $value);
+
       #{$property}: if(
-        type-of($value) == "list" and list.is-bracketed($value),
-        smartScale(list.nth($value, 3), "desktop"),
-        smartScale($value, "desktop")
+        type-of($valueArr) and length($valueArr) > 2,
+        smartScale(list.nth($valueArr, 3), 'desktop'),
+        smartScale($valueArr, 'desktop')
       );
     }
   }
 
   @include largeDesktop() {
     @each $property, $value in $params {
+      $valueArr: list.join([], $value);
+
       #{$property}: if(
-        type-of($value) == "list" and list.is-bracketed($value),
-        smartScale(list.nth($value, 3), "largeDesktop"),
-        smartScale($value, "largeDesktop")
+        type-of($valueArr) and length($valueArr) > 2,
+        smartScale(list.nth($valueArr, 3), 'largeDesktop'),
+        smartScale($valueArr, 'largeDesktop')
       );
     }
   }

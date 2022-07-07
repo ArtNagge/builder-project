@@ -25,5 +25,9 @@ module.exports = {
   },
   publicRuntimeConfig: {
     APP_LOCALE: process.env.APP_LOCALE || 'ru-RU',
+    BASE_URL: process.env.BASE_URL,
+  },
+  images: {
+    domains: [],
   },
 }

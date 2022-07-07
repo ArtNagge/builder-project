@@ -1,4 +1,11 @@
-export type TTypographyVariant = any
+export type TTypographyVariant =
+  | 'titleLarge'
+  | 'title'
+  | 'labelLarge'
+  | 'label'
+  | 'bodyLarge'
+  | 'body'
+  | 'details'
 
 export type TTypographyComponent =
   | 'h1'

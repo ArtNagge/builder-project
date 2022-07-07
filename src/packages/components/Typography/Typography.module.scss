@@ -1,27 +1,86 @@
 .typography {
-  // margin: 0;
-  // font-size: 16px;
-  // font-style: normal;
-  // font-weight: normal;
-  // line-height: 150%;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
 
-  // @include scale(
-  //   (
-  //     font-size: 16px,
-  //   )
-  // );
+  &.link {
+    color: inherit;
+    text-decoration: underline;
+  }
 
-  // @each $property, $value in $colorsList {
-  //   &.#{$property} {
-  //     color: var(--color-#{$property});
-  //   }
-  // }
+  &.titleLarge {
+    @include scale(
+      (
+        font-size: 24px,
+        line-height: 24px,
+        font-weight: 800,
+      )
+    );
+  }
 
-  // // &.bodySuperSmall {
-  // //   @include typographyBodySuperSmall;
-  // // }
+  &.title {
+    @include scale(
+      (
+        font-size: 30px,
+        line-height: 28px,
+        font-weight: 800,
+      )
+    );
+  }
 
-  // &.link {
-  //   text-decoration: none;
-  // }
+  &.labelLarge {
+    @include scale(
+      (
+        font-size: 17px,
+        line-height: 23px,
+        font-weight: 800,
+      )
+    );
+  }
+
+  &.label {
+    @include scale(
+      (
+        font-size: 14px,
+        line-height: 18px,
+        font-weight: 800,
+      )
+    );
+  }
+
+  &.bodyLarge {
+    @include scale(
+      (
+        font-size: 17px,
+        line-height: 23px,
+        font-weight: 500,
+      )
+    );
+  }
+
+  &.body {
+    @include scale(
+      (
+        font-size: 14px,
+        line-height: 18px,
+        font-weight: 500,
+      )
+    );
+  }
+
+  &.details {
+    @include scale(
+      (
+        font-size: 12px,
+        line-height: 14px,
+        font-weight: 800,
+      )
+    );
+  }
+
+  // COLORS
+  @each $value, $color in $colorsList {
+    &.color_#{$value} {
+      color: $color;
+    }
+  }
 }
